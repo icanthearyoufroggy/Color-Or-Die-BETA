@@ -1,0 +1,46 @@
+-- [No Darkness + Monster Esp] --
+
+local Lighting = game:GetService("Lighting")
+local Atmosphere = Lighting.Atmosphere
+local FogEnd = Lighting.FogEnd
+local FogStart = Lighting.FogStart
+local MonsterFolder = workspace.Monster
+local Monster = MonsterFolder.StickMan
+local Highlight = Monster.Highlight
+local ColorCorrection = Lighting.ColorCorrection
+local Bloom = Lighting.Bloom
+local inf = math.huge
+
+Highlight.DepthMode = "AlwaysOnTop"
+Highlight.FillTransparency = 0
+Highlight.OutlineTransparency = 0
+Highlight.OutlineColor = Color3.new(0,0,0)
+Highlight.FillColor = Color3.new(1,1,1)
+
+FogEnd = inf
+FogStart = inf
+
+if Bloom.Parent ~= nil then
+	Bloom:Destroy()
+	
+	local bloom = Instance.new("BloomEffect",Lighting)
+	bloom.Enabled = true
+	bloom.Intensity = 0
+	bloom.Size = 0
+	bloom.Threshold = 0
+end
+
+if ColorCorrection.Parent ~= nil then
+	ColorCorrection:Destroy()
+	
+	local colorcorrection = Instance.new("ColorCorrectionEffect",Lighting)
+	colorcorrection.Enabled = true
+	colorcorrection.Brightness = 0
+	colorcorrection.Contrast = 0
+	colorcorrection.Saturation = 1
+	colorcorrection.TintColor = Color3.new(1,1,1)
+end
+
+if Atmosphere.Parent ~= nil then
+	Atmosphere:Destroy()
+end
